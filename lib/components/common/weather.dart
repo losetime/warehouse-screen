@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:warehouse_screen/utils/logger.dart';
 import '../../enums/commonEnum.dart' show appId, appSecret;
 
 class RealTimeWeather extends StatefulWidget {
@@ -25,14 +26,14 @@ class _RealTimeWeather extends State<RealTimeWeather>
   initWeather() async {
     try {
       Response response = await Dio().get(
-          'https://www.yiketianqi.com/free/day?appid=${appId}&appsecret=${appSecret}&unescape=1');
+          'https://www.yiketianqi.com/free/day?appid=$appId&appsecret=$appSecret&unescape=1');
       var result = response.data;
       setState(() {
         weatherStatus = result['wea'];
         temperature = result['tem'] + '℃';
       });
     } catch (e) {
-      print(e);
+      logger.e(e);
     }
   }
 

@@ -1,4 +1,3 @@
-// import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
@@ -113,7 +112,7 @@ class _HomeIndex extends State<HomeIndex> with SingleTickerProviderStateMixin {
    **/
   void setTimingSwitchTab() {
     switchTabsTimer = Timer.periodic(const Duration(seconds: 20), (timer) {
-      if (tabIndex == 0 && toolLogList.length > 2) {
+      if (tabIndex == 0 && toolLogList.isNotEmpty) {
         setState(() {
           tabIndex = 1;
         });

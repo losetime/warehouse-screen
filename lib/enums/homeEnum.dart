@@ -1,7 +1,7 @@
 List<String> freightSpaceHeader = <String>[
   '仓位',
-  '工器具总数量',
-  '工器具在位数量',
+  '工器具应在位数量',
+  '工器具实际在位数量',
   '工器具出库数量',
   '仓位状态',
   '放置状态'
@@ -17,7 +17,6 @@ List<String> freightSpaceRowKey = [
 ];
 
 List<String> toolHeader = [
-  '名称',
   '工器具编号',
   '类别',
   '标签',
@@ -27,11 +26,10 @@ List<String> toolHeader = [
 ];
 
 List<String> toolRowKey = [
-  'name',
-  'codeNumber',
+  'codeNum',
   'toolTypeName',
   'toolTagName',
-  'id',
+  'toolModelName',
   'currentPosition',
   'expectPosition',
 ];

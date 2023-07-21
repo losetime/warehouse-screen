@@ -14,7 +14,6 @@ import '../utils/web_socket_channel.dart';
 // import 'dart:convert' as convert;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../utils/app_cache.dart';
-import '../utils/logger.dart';
 
 // 动态组件
 class IndexPage extends StatefulWidget {
@@ -59,7 +58,10 @@ class _IndexPageState extends State<IndexPage> {
     // currentPage = tabBodies[currentIndex];
     super.initState();
     EasyLoading.instance.displayDuration = const Duration(milliseconds: 6000);
-    initTts();
+    // 不加延时会在某些机器上闪退，原因未知
+    Future.delayed(const Duration(milliseconds: 5000), () {
+      initTts();
+    });
     Future.microtask(() => {initProvider()});
     if (!isSocketInit) {
       isSocketInit = true;
@@ -92,17 +94,21 @@ class _IndexPageState extends State<IndexPage> {
    * @desc 初始化TTS 
    **/
   void initTts() async {
-    flutterTts = FlutterTts();
-    await flutterTts.setLanguage("zh-CN");
-    List engines = await flutterTts.getEngines;
-    logger.i(engines);
-    String engine =
-        engines.firstWhere((element) => element == 'com.iflytek.speechcloud');
-    if (engine.isNotEmpty) {
-      await flutterTts.setEngine(engine);
-      await flutterTts.setSpeechRate(0.8);
-    } else {
-      EasyLoading.show(status: '未找到语音引擎');
+    try {
+      flutterTts = FlutterTts();
+      await flutterTts.setLanguage("zh-CN");
+      List engines = await flutterTts.getEngines;
+      String engine = engines.firstWhere(
+          (element) => element == 'com.iflytek.speechcloud',
+          orElse: () => 'com.google.android.tts');
+      if (engine.isNotEmpty) {
+        await flutterTts.setEngine(engine);
+        await flutterTts.setSpeechRate(0.8);
+      } else {
+        EasyLoading.show(status: '未找到语音引擎');
+      }
+    } catch (e) {
+      EasyLoading.show(status: '初始化TTS出错');
     }
   }
 

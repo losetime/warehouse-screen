@@ -68,11 +68,11 @@ class _ToolReceive extends State<ToolReceive>
       ),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             width: double.maxFinite,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   '人员信息',
                   style: TextStyle(
@@ -146,9 +146,9 @@ class _ToolReceive extends State<ToolReceive>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 '本次领用情况',
                 style: TextStyle(
@@ -172,8 +172,8 @@ class _ToolReceive extends State<ToolReceive>
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  children: const [
+                const Column(
+                  children: [
                     Icon(
                       Icons.check_circle_rounded,
                       color: Colors.green,

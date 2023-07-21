@@ -137,7 +137,7 @@ class WebSocketChannel {
       // EasyLoading.show(status: '获取服务地址中...');
       Response response = await Dio(BaseOptions(
         connectTimeout: const Duration(seconds: 16),
-      )).get('$ip/person/sniff/serverUrl');
+      )).get('http://$ip:12240/tool/sniff/serverUrl');
       var result = response.data;
       if (result['code'] == 20000) {
         EasyLoading.dismiss();
