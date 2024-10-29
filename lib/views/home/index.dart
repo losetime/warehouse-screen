@@ -48,7 +48,7 @@ class _HomeIndex extends State<HomeIndex> with SingleTickerProviderStateMixin {
     super.initState();
     baseUtils = BaseUtils();
     Future.microtask(() => initProvider());
-    setTimingSwitchTab();
+    // setTimingSwitchTab();
     changeIndicator();
   }
 

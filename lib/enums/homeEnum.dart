@@ -16,7 +16,25 @@ List<String> freightSpaceRowKey = [
   'toolIncorrectSum',
 ];
 
+// List<String> toolHeader = [
+//   '工器具编号',
+//   '类别',
+//   '标签',
+//   '型号',
+//   '当前仓位',
+//   '正确仓位',
+// ];
+
+// List<String> toolRowKey = [
+//   'codeNum',
+//   'toolTypeName',
+//   'toolTagName',
+//   'toolModelName',
+//   'currentPosition',
+//   'expectPosition',
+// ];
 List<String> toolHeader = [
+  '名称',
   '工器具编号',
   '类别',
   '标签',
@@ -26,10 +44,11 @@ List<String> toolHeader = [
 ];
 
 List<String> toolRowKey = [
-  'codeNum',
+  'name',
+  'codeNumber',
   'toolTypeName',
   'toolTagName',
-  'toolModelName',
+  'id',
   'currentPosition',
   'expectPosition',
 ];

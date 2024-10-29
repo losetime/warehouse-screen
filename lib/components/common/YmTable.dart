@@ -224,15 +224,27 @@ class _YmTable extends State<YmTable> {
             ),
           );
         default:
-          return Expanded(
-            child: Text(
-              sourceMap[item],
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.white,
+          try {
+            return Expanded(
+              child: Text(
+                sourceMap[item],
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
               ),
-            ),
-          );
+            );
+          } catch (e) {
+            return const Expanded(
+              child: Text(
+                '--',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            );
+          }
       }
     }).toList();
   }
